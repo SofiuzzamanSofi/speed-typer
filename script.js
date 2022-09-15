@@ -22,7 +22,6 @@ fetch("./texts.json")
 // checks the user typed character and displays accordingly
 const typeController = (e) => {
   const newLetter = e.key;
-  console.log(newLetter);
   // Handle backspace press
   if (newLetter == "Backspace") {
     userText = userText.slice(0, userText.length - 1);
@@ -35,7 +34,6 @@ const typeController = (e) => {
 
   // if it is not a valid character like Control/Alt then skip displaying anything
   if (!validLetters.includes(newLetter)) {
-    errorCount++;
     return;
   }
 
@@ -44,9 +42,10 @@ const typeController = (e) => {
   const newLetterCorrect = validate(newLetter);
 
   if (newLetterCorrect) {
-    display.innerHTML += `<span class="green">${newLetter === " " ? "▪" : newLetter}</span>`;
+    display.innerHTML += `<span class="green">${newLetter === " " ? "   " : newLetter}</span>`;
   } else {
     display.innerHTML += `<span class="red">${newLetter === " " ? "▪" : newLetter}</span>`;
+    errorCount++;
   }
 
   // check if given question text is equal to user typed text
@@ -78,7 +77,6 @@ const gameOver = () => {
   display.innerHTML = "";
   // make it inactive
   display.classList.add("inactive");
-  console.log(timeTaken, errorCount);
   // show result
   resultModal.innerHTML = `
     <h1>Finished!</h1>

@@ -199,3 +199,9 @@ button {
     width: auto;
   }
 }
+
+/* whit color  */
+.white-color {
+  color: white;
+  text-decoration: none;
+}
